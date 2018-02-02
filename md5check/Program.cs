@@ -19,7 +19,7 @@ namespace md5check
         static string md5result = "38959589619129abc573d5130445cb6d";
 
 
-        static List<string> fullArray = new List<string>();
+        static List<string> fullArray;
 
         static List<string> array1, array2, array3, array4, array5, array6, array7, array8, array9, array10, array11, array12, array13, array14;
         private static void CheckforResult(string md5result)
@@ -96,9 +96,9 @@ namespace md5check
 
             for (int i= 0;i < array.Count();i++)
             {
-                for (int j=0;j<fullArray.Count();j++)
+                for (int j=0;j<fullArray.Count()-1;j++)
                 {
-                    var testword = array[i] + array[j];
+                    var testword = array[i] + fullArray[j];
                     string result = CalculateMD5Hash(testword);
                     globalcounter++;
                     Console.WriteLine(globalcounter);
