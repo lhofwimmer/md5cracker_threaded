@@ -86,6 +86,18 @@ namespace md5check
 
             var t14 = new Thread(() => RealStart(array14));
             t14.Start();
+
+            var countert = new Thread(() => PrintCounter());
+            countert.Start();
+        }
+
+        private static void PrintCounter()
+        {
+            while(true)
+            {
+                Console.WriteLine($"{globalcounter} | {md5result}");
+                Thread.Sleep(2000);
+            } 
         }
 
         static long globalcounter = 0;
@@ -102,7 +114,10 @@ namespace md5check
                     var testword = array[i] + fullArray[j];
                     string result = CalculateMD5Hash(testword);
                     globalcounter++;
-                    Console.WriteLine(globalcounter + " | " + md5result);
+
+                    
+
+                    //Console.WriteLine(globalcounter + " | " + md5result);
                     if (result.Equals(md5result))
                     {
                         Console.WriteLine(testword + " | " + globalcounter);
