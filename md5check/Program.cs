@@ -13,10 +13,11 @@ namespace md5check
     {
         static void Main(string[] args)
         {
+            md5result = File.ReadAllText(Environment.CurrentDirectory + "\\hash.txt");
             CheckforResult(md5result);
             Console.ReadKey();
         }
-        static string md5result = "38959589619129abc573d5130445cb6d";
+        static string md5result;
 
 
         static List<string> fullArray;
@@ -101,7 +102,7 @@ namespace md5check
                     var testword = array[i] + fullArray[j];
                     string result = CalculateMD5Hash(testword);
                     globalcounter++;
-                    Console.WriteLine(globalcounter);
+                    Console.WriteLine(globalcounter + " | " + md5result);
                     if (result.Equals(md5result))
                     {
                         Console.WriteLine(testword + " | " + globalcounter);
